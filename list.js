@@ -4,6 +4,7 @@ $.ajax({
     console.log(sucess);
     let post= sucess.data.children;
     console.log(post);
+   
     for(i=0; i<post.length; i++){
         let postContainer=document.createElement("div");
         let link=document.createElement("a");
@@ -15,14 +16,13 @@ $.ajax({
             previewImg.src="images/thumbs-up.png";
         }else{
         previewImg.src=thumbnail;}
-       // link.href=post[i].data.url;
-       link.href="single.html/?url=";
-       console.log(link.this);
+        permalink=post[i].data.permalink
+        console.log(permalink);
+       link.href=`single.html?url=${permalink}`;
         link.innerHTML=title;
         postContainer.appendChild(link);
         postContainer.appendChild(previewImg);
         document.body.appendChild(postContainer);
-        
     }
 
 })
